@@ -15,3 +15,13 @@ export const getArticles = async (limit, sort_by, topic) => {
     console.log(error);
   }
 };
+
+export const getArticleById = async (id) => {
+  try {
+    const response = await ncNews.get(`/articles/{${id}`);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

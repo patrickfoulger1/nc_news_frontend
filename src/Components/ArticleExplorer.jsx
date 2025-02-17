@@ -20,7 +20,7 @@ function ArticleExplorer() {
       });
   }, []);
   return (
-    <section className="flex h-5/10 w-full" aria-label="Articles">
+    <section className="flex h-full w-full" aria-label="Articles">
       <ArticleCarousel articles={articles} />
     </section>
   );
