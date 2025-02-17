@@ -1,9 +1,12 @@
 import { useState } from "react";
-
-import "./App.css";
+import ArticleExplorer from "./Components/ArticleExplorer";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ArticleExplorer></ArticleExplorer>
+    </>
+  );
 }
 
 export default App;
