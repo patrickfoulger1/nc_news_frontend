@@ -1,26 +1,61 @@
-import { Virtual, Pagination } from "swiper/modules";
+import { Virtual, Pagination, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/virtual";
 import "swiper/css/pagination";
-import ArticleCard from "./ArticleCard";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
 
-function ArticleCarousel({ articles }) {
-  const articleSlides = articles.map((article, index) => (
-    <SwiperSlide key={article.article_id} virtualIndex={index}>
-      <ArticleCard article={article}></ArticleCard>
-    </SwiperSlide>
-  ));
+import ArticleCard from "./ArticleCard";
+import { useState } from "react";
+
+function ArticleCarousel({ articles, setSwiper }) {
+  const articleSlides = articles.map((article, index) => {
+    return (
+      <SwiperSlide key={article.article_id} virtualIndex={index}>
+        <ArticleCard article={article}></ArticleCard>
+      </SwiperSlide>
+    );
+  });
 
   return (
     <Swiper
-      modules={[Virtual, Pagination]}
+      style={{
+        "--swiper-pagination-color": "#FFBA08",
+        "--swiper-pagination-bullet-inactive-color": "#999999",
+        "--swiper-pagination-bullet-inactive-opacity": "1",
+        "--swiper-pagination-bullet-size": "8px",
+        "--swiper-pagination-bullet-horizontal-gap": "6px",
+      }}
+      modules={[Virtual, Pagination, Mousewheel]}
       spaceBetween={0}
-      slidesPerView={1}
+      slidesPerView={2}
+      direction={"vertical"}
+      mousewheel={true}
       pagination={{
         dynamicBullets: true,
+      }}
+      onSwiper={(swiper) => {
+        setSwiper(swiper);
+      }}
+      breakpoints={{
+        376: {
+          slidesPerView: 3,
+        },
+
+        640: {
+          slidesPerView: 3,
+          direction: "horizontal",
+        },
+        1028: {
+          slidesPerView: 4,
+          direction: "horizontal",
+        },
+        1920: {
+          slidesPerView: 5,
+        },
       }}
       virtual
     >
