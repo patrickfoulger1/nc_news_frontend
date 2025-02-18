@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticleCarousel from "./ArticleCarousel";
-import { getArticles } from "../Apis/ncnews";
+import { getArticles } from "../utils/ncnews-api";
 
 function ArticleExplorer() {
   const [articles, setArticles] = useState([]);
@@ -19,10 +19,16 @@ function ArticleExplorer() {
         setArticlesLoading(false);
       });
   }, []);
+
+  const loading = articlesLoading ? <p>loading...</p> : null;
+
   return (
-    <section className="flex h-full w-full" aria-label="Articles">
-      <ArticleCarousel articles={articles} />
-    </section>
+    <>
+      {loading}
+      <section className="flex h-full w-full" aria-label="Articles">
+        <ArticleCarousel articles={articles} />
+      </section>
+    </>
   );
 }
 

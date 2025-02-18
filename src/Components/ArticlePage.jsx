@@ -1,8 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getArticleById } from "../utils/ncnews-api";
+import { useParams } from "react-router";
+import Article from "./Article";
 
-function ArticlePage({article_id}) {
-    const [article, setArticle] = useState({})
-    return (  );
+function ArticlePage({}) {
+  const [article, setArticle] = useState(null);
+  const [articleLoading, setArticleLoading] = useState(false);
+  const { article_id } = useParams();
+
+  useEffect(() => {
+    setArticleLoading(true);
+    console.log(article_id);
+    getArticleById(article_id)
+      .then((res) => {
+        console.log(res);
+        setArticle(res);
+        setArticleLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setArticleLoading(false);
+      });
+  }, [article_id]);
+
+  const elToRender =
+    articleLoading || !article ? (
+      <p>loading...</p>
+    ) : (
+      <Article article={article} />
+    );
+
+  return <>{elToRender}</>;
 }
 
 export default ArticlePage;

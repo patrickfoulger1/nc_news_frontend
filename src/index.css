@@ -1,11 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-noto-sans: "Noto Sans", sans-serif;
+}
 
 html,
 body {
-  background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
   margin: 0;
   padding: 0;
+  height: 100dvh;
+  width: 100dvw;
 }

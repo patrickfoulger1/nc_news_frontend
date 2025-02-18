@@ -1,4 +1,4 @@
-import { Virtual, Pagination, Mousewheel, Navigation } from "swiper/modules";
+import { Virtual, Pagination, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -26,13 +26,11 @@ function ArticleCarousel({ articles }) {
         "--swiper-pagination-bullet-size": "8px",
         "--swiper-pagination-bullet-horizontal-gap": "6px",
       }}
-      modules={[Virtual, Pagination, Mousewheel, Navigation]}
+      modules={[Virtual, Pagination, Mousewheel]}
       spaceBetween={0}
       slidesPerView={2}
       direction={"vertical"}
       mousewheel={true}
-      navigation={false}
-      freeMode={true}
       pagination={{
         dynamicBullets: true,
       }}
@@ -42,18 +40,15 @@ function ArticleCarousel({ articles }) {
         },
 
         640: {
-          navigation: { enabled: true },
           slidesPerView: 3,
           direction: "horizontal",
         },
         1028: {
           slidesPerView: 4,
           direction: "horizontal",
-          navigation: { enabled: true },
         },
         1920: {
           slidesPerView: 5,
-          navigation: { enabled: true },
         },
       }}
       virtual
