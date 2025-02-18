@@ -1,8 +1,16 @@
+import { getDate } from "../utils/formatter";
 import BackButton from "./BackButton";
 import Comments from "./Comments";
 
 function Article({
-  article: { article_img_url: articleImage, title, body, article_id },
+  article: {
+    article_img_url: articleImage,
+    title,
+    body,
+    article_id,
+    author,
+    created_at,
+  },
 }) {
   return (
     <>
@@ -12,7 +20,12 @@ function Article({
           src={articleImage}
           alt={title}
         ></img>
-        <h1 className="font-extrabold text-center text-xl m-3 ">{title}</h1>
+        <h1 className="font-black text-white text-center [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)] text-xl m-3 ">
+          {title}
+        </h1>
+        <p className="text-xs text-stone-700">
+          written by {author} on {getDate(created_at)}
+        </p>
         <p className="m-3 text-l max-w-8/10 m-3">{body}</p>
 
         <BackButton article_id={article_id} />
