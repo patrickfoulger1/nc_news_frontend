@@ -25,7 +25,9 @@ function ArticlePage({}) {
     articleLoading || !article ? (
       <p>loading...</p>
     ) : (
-      <Article article={article} />
+      <>
+        <Article article={article} />
+      </>
     );
 
   return <>{elToRender}</>;
