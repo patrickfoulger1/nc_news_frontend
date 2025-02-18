@@ -1,6 +1,7 @@
 import { getDate } from "../utils/formatter";
 import BackButton from "./BackButton";
 import Comments from "./Comments";
+import StarButton from "./StarButton";
 
 function Article({
   article: {
@@ -26,9 +27,11 @@ function Article({
         <p className="text-xs text-stone-700">
           written by {author} on {getDate(created_at)}
         </p>
+
         <p className="m-3 text-l max-w-8/10 m-3">{body}</p>
 
         <BackButton article_id={article_id} />
+        <StarButton></StarButton>
         <Comments article_id={article_id}></Comments>
       </div>
     </>
