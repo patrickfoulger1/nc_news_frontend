@@ -9,13 +9,16 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 
 import ArticleCard from "./ArticleCard";
+import { useState } from "react";
 
-function ArticleCarousel({ articles }) {
-  const articleSlides = articles.map((article, index) => (
-    <SwiperSlide key={article.article_id} virtualIndex={index}>
-      <ArticleCard article={article}></ArticleCard>
-    </SwiperSlide>
-  ));
+function ArticleCarousel({ articles, setSwiper }) {
+  const articleSlides = articles.map((article, index) => {
+    return (
+      <SwiperSlide key={article.article_id} virtualIndex={index}>
+        <ArticleCard article={article}></ArticleCard>
+      </SwiperSlide>
+    );
+  });
 
   return (
     <Swiper
@@ -33,6 +36,9 @@ function ArticleCarousel({ articles }) {
       mousewheel={true}
       pagination={{
         dynamicBullets: true,
+      }}
+      onSwiper={(swiper) => {
+        setSwiper(swiper);
       }}
       breakpoints={{
         376: {

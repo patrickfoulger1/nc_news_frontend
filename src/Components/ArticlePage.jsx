@@ -10,10 +10,8 @@ function ArticlePage({}) {
 
   useEffect(() => {
     setArticleLoading(true);
-    console.log(article_id);
     getArticleById(article_id)
       .then((res) => {
-        console.log(res);
         setArticle(res);
         setArticleLoading(false);
       })
