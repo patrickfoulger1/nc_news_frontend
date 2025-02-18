@@ -1,4 +1,5 @@
 import BackButton from "./BackButton";
+import Comments from "./Comments";
 
 function Article({
   article: { article_img_url: articleImage, title, body, article_id },
@@ -15,6 +16,7 @@ function Article({
         <p className="m-3 text-l max-w-8/10 m-3">{body}</p>
 
         <BackButton article_id={article_id} />
+        <Comments article_id={article_id}></Comments>
       </div>
     </>
   );

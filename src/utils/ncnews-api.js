@@ -18,9 +18,19 @@ export const getArticles = async (limit, sort_by, topic) => {
 
 export const getArticleById = async (id) => {
   try {
-    console.log(id);
     const response = await ncNews.get(`/articles/${id}`);
 
     return response.data.article;
   } catch (error) {}
+};
+
+export const getArticleComments = async (id, limit, p) => {
+  try {
+    const response = await ncNews.get(`/articles/${id}/comments`, {
+      params: { limit, p },
+    });
+    return response.data.comments;
+  } catch (error) {
+    console.log(error);
+  }
 };
