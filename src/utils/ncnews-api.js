@@ -49,3 +49,16 @@ export const patchUpvote = async (inc_votes, id) => {
     return Promise.reject(error);
   }
 };
+
+export const postComment = async (username, body, id) => {
+  try {
+    const response = await ncNews.post(`/articles/${id}/comments`, {
+      username,
+      body,
+    });
+
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};

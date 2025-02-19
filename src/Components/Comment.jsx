@@ -3,7 +3,7 @@ import { getDate } from "../utils/formatter";
 function Comment({ comment: { author, body, created_at } }) {
   return (
     <>
-      <div className="flex border-t-1 border-white">
+      <li className="flex border-t-1 border-white max-w-300 min-w-100">
         <br />
         <p className="w-2/4">
           <span>{author}</span>
@@ -12,7 +12,7 @@ function Comment({ comment: { author, body, created_at } }) {
         </p>
 
         <p className="w-3/4 "> {body}</p>
-      </div>
+      </li>
       <br />
     </>
   );

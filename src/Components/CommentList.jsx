@@ -1,3 +1,4 @@
+import AddCommentForm from "./AddCommentForm";
 import Comment from "./Comment";
 
 function CommentList({ comments }) {

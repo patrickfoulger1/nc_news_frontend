@@ -1,9 +1,16 @@
-import { Star } from "@phosphor-icons/react";
+import { Star, ChatCircleText } from "@phosphor-icons/react";
 import { Link } from "react-router";
 import { getDate } from "../utils/formatter";
 
 function ArticleCard({
-  article: { article_id, article_img_url, title, created_at, votes },
+  article: {
+    article_id,
+    article_img_url,
+    title,
+    created_at,
+    votes,
+    comment_count,
+  },
 }) {
   return (
     <Link
@@ -24,12 +31,19 @@ function ArticleCard({
 
             <p className="flex flex-rows items-center">
               <Star
-                className="m-2"
+                className="m-3 mr-1"
                 size={25}
                 weight="fill"
                 color="#FB2C36"
               ></Star>
               {votes} likes
+              <ChatCircleText
+                className=" m-3 mr-1"
+                size={25}
+                weight="fill"
+                color="#FB2C36"
+              ></ChatCircleText>
+              {comment_count} comments
             </p>
           </div>
         </figcaption>
