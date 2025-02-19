@@ -9,10 +9,13 @@ function BackButton({ article_id }) {
         search: `?display=${article_id}`,
       }}
     >
-      <button className="fixed absolute bottom-4 left-3/7 flex flex-rows bg-black rounded-full w-20 items-center m-auto ">
+      <div
+        className="fixed absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-rows bg-black rounded-full w-20 items-center m-auto "
+        aria-label="back button"
+      >
         <ArrowLeft size={32} color="#FFFFFF" weight="fill" />
         <span className="text-white">Back</span>
-      </button>
+      </div>
     </Link>
   );
 }

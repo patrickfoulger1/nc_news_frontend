@@ -1,8 +1,9 @@
+import { Star } from "@phosphor-icons/react";
 import { Link } from "react-router";
 import { getDate } from "../utils/formatter";
 
 function ArticleCard({
-  article: { article_id, article_img_url, title, created_at },
+  article: { article_id, article_img_url, title, created_at, votes },
 }) {
   return (
     <Link
@@ -20,6 +21,16 @@ function ArticleCard({
           <div>
             <h5 className="text-xl font-medium text-slate-800">{title}</h5>
             <p className="mt-2 text-slate-600">{getDate(created_at)}</p>
+
+            <p className="flex flex-rows items-center">
+              <Star
+                className="m-2"
+                size={25}
+                weight="fill"
+                color="#FB2C36"
+              ></Star>
+              {votes} likes
+            </p>
           </div>
         </figcaption>
       </figure>
