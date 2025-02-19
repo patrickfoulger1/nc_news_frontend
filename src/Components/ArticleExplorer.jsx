@@ -10,6 +10,7 @@ function ArticleExplorer() {
   const [displayIndex, setDisplayIndex] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const display = searchParams.get("display");
+  const topic = searchParams.get("topic");
 
   useEffect(() => {
     setArticlesLoading(true);

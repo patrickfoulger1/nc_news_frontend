@@ -30,7 +30,11 @@ function ArticlePage({}) {
       </>
     );
 
-  return <>{elToRender}</>;
+  return (
+    <>
+      <section>{elToRender}</section>
+    </>
+  );
 }
 
 export default ArticlePage;
