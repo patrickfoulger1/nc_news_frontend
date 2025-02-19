@@ -62,3 +62,11 @@ export const postComment = async (username, body, id) => {
     return Promise.reject(error);
   }
 };
+
+export const deleteComment = async (id) => {
+  try {
+    await ncNews.delete(`/comments/${id}`);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};

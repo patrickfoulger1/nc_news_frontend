@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { postComment } from "../utils/ncnews-api";
+import { UserAccount } from "../contexts/UserAccount";
 
 function AddCommentForm({ article_id, setComments, comments }) {
   const [commentBody, setCommentBody] = useState("");
   const [sendingComment, setSendingComment] = useState(false);
   const [error, setError] = useState(null);
+  const {
+    loggedOnUser: { username },
+  } = useContext(UserAccount);
 
   const validateComment = (comment) => {
     if (comment.length === 0) {
@@ -21,7 +25,7 @@ function AddCommentForm({ article_id, setComments, comments }) {
 
     if (!error && !sendingComment) {
       setSendingComment(true);
-      postComment("happyamy2016", commentBody, article_id)
+      postComment(username, commentBody, article_id)
         .then((res) => {
           setSendingComment(false);
           setComments([res.comment, ...comments]);
@@ -57,7 +61,7 @@ function AddCommentForm({ article_id, setComments, comments }) {
         className={`${
           sendingComment
             ? "cursor-progress bg-gray-800"
-            : "cursor-pointer hover:bg-amber-400"
+            : "cursor-pointer hover:bg-red-800"
         }  m-2 w-40 h-10 bg-black text-white font-bold py-2 px-4 rounded-full`}
       />
       {error ? <p className="text-black italic">{error}</p> : null}

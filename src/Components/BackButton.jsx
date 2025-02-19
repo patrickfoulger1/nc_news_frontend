@@ -10,7 +10,7 @@ function BackButton({ article_id }) {
       }}
     >
       <div
-        className="font-noto-sans hover:bg-amber-400 fixed absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-rows bg-black rounded-full w-20 items-center m-auto "
+        className="font-noto-sans hover:bg-red-800 fixed absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-rows bg-black rounded-full w-20 items-center m-auto "
         aria-label="back button"
       >
         <ArrowLeft size={32} color="#FFFFFF" weight="fill" />
