@@ -40,7 +40,7 @@ function StarButton({
         />
       </button>
       {voteError ? (
-        <span className="text-xs text-black">
+        <span className="text-xs text-black italic">
           Sorry there was a problem liking this post
         </span>
       ) : null}
