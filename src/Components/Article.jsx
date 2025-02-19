@@ -20,12 +20,15 @@ function Article({
 
   return (
     <>
-      <div className="flex flex-col font-noto-sans text-white h-full w-full m-auto items-center">
-        <img
-          className="max-w-100 rounded-b-full"
-          src={articleImage}
-          alt={title}
-        ></img>
+      <div className="flex flex-col font-noto-sans text-white h-full w-full max-w-300 m-auto items-center">
+        <div className="w-screen h-5/10 md:h-3/10 overflow-clip flex justify-center">
+          <img
+            className="object-cover max-w-250 rounded-b-full  md:overflow-none md:w-screen max-h-200"
+            src={articleImage}
+            alt={title}
+          ></img>
+        </div>
+
         <h1 className="font-black text-white text-center text-xl m-3 ">
           {title}
         </h1>
