@@ -1,7 +1,9 @@
 function Nav() {
   return (
-    <nav className="w-full h-full fixed z-2">
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 inline-flex left-0 mx-auto justify-between bg-black w-11/12 rounded-3xl">
+    <nav className="fixed z-4">
+      <div
+        className={` bg-black/75 hover:opacity-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 inline-flex left-0 mx-auto justify-between w-11/12 rounded-3xl`}
+      >
         <a
           aria-current="page"
           className="inline-flex flex-col items-center text-xs font-medium py-3 px-4 text-white flex-grow"
@@ -18,7 +20,7 @@ function Nav() {
           <span className="sr-only">Home</span>
         </a>
         <a
-          className="inline-flex flex-col items-center text-xs font-medium text-white py-3 px-4 flex-grow"
+          className="opacity-100 inline-flex flex-col items-center text-xs font-medium text-white py-3 px-4 flex-grow"
           href="#"
         >
           <svg
@@ -35,21 +37,12 @@ function Nav() {
           </svg>
         </a>
         <span className="sr-only">Upload</span>
-        <button className="relative inline-flex flex-col items-center text-xs font-medium text-white py-3 px-6 flex-grow">
-          <div className="absolute bottom-5 p-3 rounded-full border-4 border-white bg-black">
-            <svg
-              className="w-8 h-8"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </div>
+        <button className="transform -translate-y-4 w-16 h-16 bg-red-500 rounded-full overflow-hidden flex items-center justify-center">
+          <img
+            src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
+            className="w-full h-full object-cover"
+            alt="Chat"
+          />
           <span className="sr-only">Chat</span>
         </button>
         <a
