@@ -12,17 +12,22 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
   const [deletingComment, setDeletingComment] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [commentBody, setCommentBody] = useState(body);
+  const [error, setError] = useState(null);
 
   const deleteButton = () => {
     setDeletingComment(true);
+    setError(null);
+    setCommentBody("...");
     deleteComment(comment_id)
       .then(() => {
         setDeletingComment(false);
         setCommentBody("comment removed");
         setCommentDeleted(true);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        setDeletingComment(false);
+        setCommentBody(body);
+        setError("We had trouble deleting your comment");
       });
   };
 
@@ -36,7 +41,20 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
           <span className="text-xs text-stone-700">{getDate(created_at)}</span>
         </p>
 
-        <p className="w-3/4 border-t-1 border-black"> {commentBody}</p>
+        <p
+          className={`w-3/4 border-t-1 border-black ${
+            commentDeleted || deletingComment ? "italic text-black" : ""
+          }`}
+        >
+          {commentBody}
+          {error ? (
+            <span className="italic text-black">
+              <br />
+              {error}
+            </span>
+          ) : null}
+        </p>
+
         <span
           className={`w-22 h-15 text-black ${
             username === author ? "border-none" : "border-t-1"
