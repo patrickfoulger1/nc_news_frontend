@@ -13,6 +13,7 @@ export const getArticles = async (limit, sort_by, topic) => {
     return response.data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -21,7 +22,9 @@ export const getArticleById = async (id) => {
     const response = await ncNews.get(`/articles/${id}`);
 
     return response.data.article;
-  } catch (error) {}
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export const getArticleComments = async (id, limit, p) => {
@@ -31,6 +34,18 @@ export const getArticleComments = async (id, limit, p) => {
     });
     return response.data.comments;
   } catch (error) {
-    console.log(error);
+    return Promise.reject(error);
+  }
+};
+
+export const patchUpvote = async (inc_votes, id) => {
+  try {
+    const response = await ncNews.patch(`/articles/${id}`, {
+      inc_votes,
+    });
+
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
   }
 };
