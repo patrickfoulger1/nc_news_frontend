@@ -17,9 +17,9 @@ function StarButton({
         aria-label="star upvote"
         className={`${
           starred
-            ? `animate-[spin_1s_ease-in-out_1]`
-            : "animate-[bounce_1s_ease-in-out_infinite]"
-        } transition-all`}
+            ? `animate-[spin_1s_ease-in-out_1] `
+            : "animate-[bounce_1s_ease-in-out_infinite] cursor-pointer"
+        } transition-all `}
       >
         <Star
           size={30}

@@ -3,7 +3,7 @@ import { getArticleComments } from "../utils/ncnews-api";
 import CommentList from "./CommentList";
 import AddCommentForm from "./AddCommentForm";
 
-function Comments({ article_id }) {
+function Comments({ article_id, setArticleCommentCount, articleCommentCount }) {
   const [comments, setComments] = useState(null);
   const [commentsLoading, setCommentsLoading] = useState(false);
   useEffect(() => {

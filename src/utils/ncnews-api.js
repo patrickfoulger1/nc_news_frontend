@@ -4,16 +4,15 @@ const ncNews = axios.create({
   baseURL: "https://nc-news-ttql.onrender.com/api",
 });
 
-export const getArticles = async (limit, sort_by, topic) => {
+export const getArticles = async (limit, topic, sort_by, order) => {
   try {
     const response = await ncNews.get("/articles", {
-      params: { limit, sort_by, topic },
+      params: { limit, topic, sort_by, order },
     });
 
     return response.data;
   } catch (error) {
-    console.log(error);
-    return error;
+    return Promise.reject(error);
   }
 };
 

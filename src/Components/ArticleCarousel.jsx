@@ -37,6 +37,7 @@ function ArticleCarousel({ articles, setSwiper }) {
       pagination={{
         dynamicBullets: true,
       }}
+      grabCursor={true}
       onSwiper={(swiper) => {
         setSwiper(swiper);
       }}
