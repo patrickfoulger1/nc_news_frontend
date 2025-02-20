@@ -42,19 +42,19 @@ function ArticleCarousel({ articles, setSwiper }) {
       }}
       breakpoints={{
         376: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
 
-        640: {
-          slidesPerView: 3,
+        768: {
+          slidesPerView: 2,
           direction: "horizontal",
         },
         1028: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           direction: "horizontal",
         },
         1920: {
-          slidesPerView: 5,
+          slidesPerView: 4,
           direction: "horizontal",
         },
       }}

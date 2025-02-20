@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { getDate } from "../utils/formatter";
-import { UserAccount } from "../contexts/UserAccount";
+import { UserAccount } from "../contexts/User";
 import { Trash } from "@phosphor-icons/react";
 import { deleteComment } from "../utils/ncnews-api";
 
@@ -33,7 +33,7 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
 
   return (
     <>
-      <li className="flex  max-w-250 min-w-100">
+      <li className="flex max-w-250 min-w-100">
         <br />
         <p className="w-2/4 border-t-1 border-black">
           <span>{author}</span>
