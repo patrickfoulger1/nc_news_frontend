@@ -2,11 +2,19 @@ import { useContext } from "react";
 import { UserAccount } from "../contexts/User";
 import { NavSettings } from "../contexts/NavSettings";
 import { Link } from "react-router";
+import { ArrowsDownUp } from "@phosphor-icons/react";
+import StarButton from "./StarButton";
 
 function Nav() {
   const { loggedOnUser } = useContext(UserAccount);
   const {
-    navSettings: { currentPage, lastArticleIdClicked },
+    navSettings: {
+      currentPage,
+      lastArticleIdClicked,
+      sortMenuActive,
+      starButton,
+    },
+    setNavSettings,
   } = useContext(NavSettings);
 
   return (
@@ -32,6 +40,7 @@ function Nav() {
         >
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
         </svg>
+        <p className="text-l">Sort</p>
         <span className="sr-only">Home</span>
       </Link>
 
@@ -43,21 +52,36 @@ function Nav() {
         />
       </div>
 
-      <Link className="inline-flex flex-col items-center text-xs font-medium text-white py-3 px-4 flex-grow">
-        <svg
-          className="w-7 h-7"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
+      {currentPage === "Home" ? (
+        <button
+          className={`cursor-pointer inline-flex flex-col items-center text-xs font-medium py-3 px-4 flex-grow ${sortMenuActive ? "text-red-500" : "text-white"}`}
+          onClick={() => {
+            setNavSettings((settings) => {
+              const newSettings = { ...settings };
+              newSettings.sortMenuActive = !newSettings.sortMenuActive;
+              return newSettings;
+            });
+          }}
         >
-          <path
-            fillRule="evenodd"
-            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-        <span className="sr-only">Profile</span>
-      </Link>
+          <ArrowsDownUp
+            className="w-7 h-7"
+            color="currentColor"
+            weight="fill"
+          />
+          <p className="text-l">Sort</p>
+          <span className="sr-only">Sort</span>
+        </button>
+      ) : (
+        <>
+          <div className="inline-flex flex-col items-center text-xs font-medium py-3 px-4 flex-grow">
+            {starButton}
+            <p className="text-l font-bold text-amber-400 select-none">
+              Like Article
+            </p>
+            <span className="sr-only">Like</span>
+          </div>
+        </>
+      )}
     </nav>
   );
 }

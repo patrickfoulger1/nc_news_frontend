@@ -16,10 +16,12 @@ function ArticlePage({}) {
       newSettings.currentPage = "Article";
       return newSettings;
     });
+
     setArticleLoading(true);
     getArticleById(article_id)
       .then((res) => {
         setArticle(res);
+
         setArticleLoading(false);
       })
       .catch((err) => {

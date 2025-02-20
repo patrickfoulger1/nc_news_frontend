@@ -1,9 +1,12 @@
+import { Star } from "@phosphor-icons/react/dist/ssr";
+import { NavSettings } from "../contexts/NavSettings";
 import { getDate } from "../utils/formatter";
 
 import Comments from "./Comments";
 import StarButton from "./StarButton";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
+import { ChatCircleText } from "@phosphor-icons/react";
 function Article({
   article: {
     article_img_url: articleImage,
@@ -14,9 +17,28 @@ function Article({
     created_at,
     votes,
     topic,
+    comment_count,
   },
 }) {
   const [articleVotes, setArticleVotes] = useState(votes);
+  const [articleCommentCount, setArticleCommentCount] = useState(comment_count);
+  const { setNavSettings } = useContext(NavSettings);
+
+  useEffect(() => {
+    setNavSettings((settings) => {
+      const newSettings = { ...settings };
+      newSettings.starButton = (
+        <StarButton
+          article_id={article_id}
+          articleVotes={articleVotes}
+          setArticleVotes={setArticleVotes}
+          originalVotes={votes}
+        ></StarButton>
+      );
+
+      return newSettings;
+    });
+  }, []);
 
   return (
     <>
@@ -47,16 +69,28 @@ function Article({
         </Link>
 
         <p className="m-3 text-l max-w-8/10 m-3">{body}</p>
-        <StarButton
+
+        <p className="flex flex-rows items-center">
+          <Star
+            className="m-3 mr-1 text-amber-300"
+            size={25}
+            weight="fill"
+          ></Star>
+          {articleVotes} likes
+          <ChatCircleText
+            className=" m-3 mr-1"
+            size={25}
+            weight="fill"
+            color="white"
+          ></ChatCircleText>
+          {articleCommentCount} comments
+        </p>
+
+        <Comments
           article_id={article_id}
-          articleVotes={articleVotes}
-          setArticleVotes={setArticleVotes}
-          originalVotes={votes}
-        ></StarButton>
-
-        <span className="">{articleVotes} likes</span>
-
-        <Comments article_id={article_id}></Comments>
+          setArticleCommentCount={setArticleCommentCount}
+          articleCommentCount={articleCommentCount}
+        ></Comments>
       </div>
     </>
   );
