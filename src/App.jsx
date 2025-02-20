@@ -14,6 +14,12 @@ function App() {
           <Routes>
             <Route path="/topic?" element={<ArticleExplorer />}></Route>
             <Route path="/:article_id" element={<ArticlePage />}></Route>
+            <Route
+              path="/*"
+              element={
+                <p className="text-black">404: This page doesn't exist D:</p>
+              }
+            ></Route>
           </Routes>
           <Nav />
         </UserAccountProvider>
