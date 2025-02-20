@@ -21,18 +21,20 @@ function ArticleExplorer() {
   const { setNavSettings, navSettings } = useContext(NavSettings);
   const display = searchParams.get("display");
   const topic = searchParams.get("topic");
-  let sort = searchParams.get("sort");
-  if (!sort) {
-    sort = "newest";
+  
+
+  let sortQuery = searchParams.get("sort");
+  if (!sortQuery) {
+    sortQuery = "newest";
   }
 
-  const sorts = [
+  const [sorts, setSorts] = useState([
     {
       name: "Newest",
       sort_by: "created_at",
       order: "DESC",
       icon: <ClockUser weight="fill" color="currentColor" />,
-      active: sort === "newest",
+      active: false,
       query: "newest",
     },
     {
@@ -40,7 +42,7 @@ function ArticleExplorer() {
       sort_by: "comment_count",
       order: "DESC",
       icon: <ChatCircleText weight="fill" color="currentColor" />,
-      active: sort === "mostcomments",
+      active: false,
       query: "mostcomments",
     },
     {
@@ -48,7 +50,7 @@ function ArticleExplorer() {
       sort_by: "votes",
       order: "Desc",
       icon: <Star weight="fill" color="currentColor" />,
-      active: sort === "mostliked",
+      active: false,
       query: "mostliked",
     },
     {
@@ -56,7 +58,7 @@ function ArticleExplorer() {
       sort_by: "created_at",
       order: "Asc",
       icon: <ClockUser weight="fill" color="currentColor" />,
-      active: sort === "oldest",
+      active: false,
       query: "oldest",
     },
     {
@@ -64,7 +66,7 @@ function ArticleExplorer() {
       sort_by: "comment_count",
       order: "ASC",
       icon: <ChatCircleSlash weight="regular" color="currentColor" />,
-      active: sort === "leastcomments",
+      active: false,
       query: "leastcomments",
     },
     {
@@ -72,10 +74,28 @@ function ArticleExplorer() {
       sort_by: "votes",
       order: "Asc",
       icon: <Star weight="regular" color="currentColor" />,
-      active: sort === "leastliked",
+      active: false,
       query: "leastliked",
     },
-  ];
+  ])
+
+  useEffect(()=>{
+      setSorts((sorts)=>{
+        const newSorts = [...sorts]
+        for(const sort of newSorts) {
+          if(sort.query === sortQuery) {
+            sort.active = true
+          }else{
+            sort.active = false
+          }
+        }
+
+        return newSorts
+
+      })
+
+
+  }, [searchParams])
 
   useEffect(() => {
     setNavSettings((settings) => {
@@ -86,7 +106,7 @@ function ArticleExplorer() {
 
     setArticlesLoading(true);
     const activeSort = sorts.find((thisSort) => {
-      return thisSort.query === sort;
+      return thisSort.query === sortQuery;
     });
     let sort_by, order;
     if (activeSort) {
@@ -102,7 +122,7 @@ function ArticleExplorer() {
         console.log(err);
         setArticlesLoading(false);
       });
-  }, [topic, sort, display]);
+  }, [topic, sortQuery, display]);
 
   useEffect(() => {
     if ((swiper, !articlesLoading)) {
@@ -130,7 +150,7 @@ function ArticleExplorer() {
   return (
     <>
       {loading}
-      <div className="absolute flex flex-col items-center justify-center fixed w-1/2 h-1/13  z-40 top-1/2 md:top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2  md:-translate-y-0">
+      <div className="absolute flex flex-col items-center justify-center fixed w-1/2 h-1/13  z-40 top-8 min-[414px]:top-1/2 md:top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2  md:-translate-y-0">
         <p className="text-white font-black text-5xl [text-shadow:_0px_0px_5px_rgba(0,0,0,0.5)]">
           #{topic ? topic : "All"}
         </p>

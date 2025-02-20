@@ -19,7 +19,7 @@ function Nav() {
 
   return (
     <nav
-      className={`z-40 bg-black/75 hover:opacity-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 inline-flex left-0 mx-auto justify-between w-11/12 rounded-3xl`}
+      className={`z-40 max-w-400 bg-black/75 hover:opacity-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 inline-flex left-0 mx-auto justify-between w-11/12 rounded-3xl`}
     >
       <Link
         to={{

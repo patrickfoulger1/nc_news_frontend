@@ -31,7 +31,7 @@ function ArticleCarousel({ articles, setSwiper }) {
       }}
       modules={[Virtual, Pagination, Mousewheel]}
       spaceBetween={0}
-      slidesPerView={2}
+      slidesPerView={1}
       direction={"vertical"}
       mousewheel={true}
       pagination={{
@@ -42,11 +42,11 @@ function ArticleCarousel({ articles, setSwiper }) {
         setSwiper(swiper);
       }}
       breakpoints={{
-        376: {
+        414: {
           slidesPerView: 2,
         },
 
-        768: {
+        667: {
           slidesPerView: 2,
           direction: "horizontal",
         },
@@ -56,6 +56,10 @@ function ArticleCarousel({ articles, setSwiper }) {
         },
         1920: {
           slidesPerView: 4,
+          direction: "horizontal",
+        },
+        2200: {
+          slidesPerView: 5,
           direction: "horizontal",
         },
       }}
