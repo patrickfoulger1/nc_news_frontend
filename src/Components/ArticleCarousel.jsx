@@ -55,6 +55,7 @@ function ArticleCarousel({ articles, setSwiper }) {
         },
         1920: {
           slidesPerView: 5,
+          direction: "horizontal",
         },
       }}
       virtual
