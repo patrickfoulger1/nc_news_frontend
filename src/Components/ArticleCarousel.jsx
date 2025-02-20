@@ -11,11 +11,11 @@ import "swiper/css/navigation";
 import ArticleCard from "./ArticleCard";
 import { useState } from "react";
 
-function ArticleCarousel({ articles, setSwiper, currentSort }) {
+function ArticleCarousel({ articles, setSwiper }) {
   const articleSlides = articles.map((article, index) => {
     return (
       <SwiperSlide key={article.article_id} virtualIndex={index}>
-        <ArticleCard currentSort={currentSort} article={article}></ArticleCard>
+        <ArticleCard article={article}></ArticleCard>
       </SwiperSlide>
     );
   });
