@@ -29,11 +29,9 @@ animation: var(--animate-spin); /* spin 1s linear infinite */
 
 html,
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
   margin: 0;
   padding: 0;
-  height: 100dvh;
-  width: 100dvw;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
 }

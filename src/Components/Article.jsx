@@ -1,10 +1,9 @@
-import { Star } from "@phosphor-icons/react";
 import { getDate } from "../utils/formatter";
-import BackButton from "./BackButton";
+
 import Comments from "./Comments";
 import StarButton from "./StarButton";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { Link } from "react-router";
 function Article({
   article: {
     article_img_url: articleImage,
@@ -14,16 +13,17 @@ function Article({
     author,
     created_at,
     votes,
+    topic,
   },
 }) {
   const [articleVotes, setArticleVotes] = useState(votes);
 
   return (
     <>
-      <div className="flex flex-col font-noto-sans text-white h-full w-full max-w-300 m-auto items-center overflow-x-hidden">
-        <div className="w-screen h-5/10 md:h-3/10 overflow-clip flex justify-center">
+      <div className="flex flex-col font-noto-sans text-white h-full w-full max-w-300 m-auto items-center pb-8">
+        <div className="w-screen h-5/10 md:h-3/10 flex justify-center">
           <img
-            className="object-cover max-w-250 rounded-b-full  md:overflow-none md:w-screen max-h-200"
+            className="object-cover rounded-b-full  md:overflow-none md:w-screen max-h-100"
             src={articleImage}
             alt={title}
           ></img>
@@ -35,6 +35,16 @@ function Article({
         <p className="text-xs text-stone-700">
           {author} - {getDate(created_at)}
         </p>
+        <Link
+          to={{
+            pathname: `/`,
+            search: `?topic=${topic}&display=${article_id}`,
+          }}
+        >
+          <p className="inline-block cursor-pointer m-2 bg-black rounded-sm p-1 text-white w-inherit hover:bg-white hover:text-black">
+            #{topic}
+          </p>
+        </Link>
 
         <p className="m-3 text-l max-w-8/10 m-3">{body}</p>
         <StarButton
@@ -43,7 +53,6 @@ function Article({
           setArticleVotes={setArticleVotes}
           originalVotes={votes}
         ></StarButton>
-        <BackButton article_id={article_id} />
 
         <span className="">{articleVotes} likes</span>
 
@@ -52,5 +61,4 @@ function Article({
     </>
   );
 }
-
 export default Article;

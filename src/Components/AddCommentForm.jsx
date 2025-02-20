@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { postComment } from "../utils/ncnews-api";
-import { UserAccount } from "../contexts/UserAccount";
+import { UserAccount } from "../contexts/User";
 
 function AddCommentForm({ article_id, setComments, comments }) {
   const [commentBody, setCommentBody] = useState("");
