@@ -4,10 +4,9 @@ export const UserAccount = createContext(null);
 
 export const UserAccountProvider = ({ children }) => {
   const [loggedOnUser, setLoggedOnUser] = useState({
-    username: "happyamy2016",
-    name: "Amy Happy",
-    avatar_url:
-      "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729",
+    username: "jolly",
+    name: "Patrick Foulger",
+    avatar_url: "https://avatars.githubusercontent.com/u/181989777?v=4",
   });
 
   return (
