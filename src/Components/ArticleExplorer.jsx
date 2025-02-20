@@ -19,9 +19,11 @@ function ArticleExplorer() {
   const [displayIndex, setDisplayIndex] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const { setNavSettings, navSettings } = useContext(NavSettings);
+  const [currentSort, setCurrentSort] = useState(null);
   const display = searchParams.get("display");
   const topic = searchParams.get("topic");
   let sort = searchParams.get("sort");
+
   if (!sort) {
     sort = "newest";
   }
@@ -90,8 +92,11 @@ function ArticleExplorer() {
     });
     let sort_by, order;
     if (activeSort) {
+      setCurrentSort(activeSort.name);
       sort_by = activeSort.sort_by;
       order = activeSort.order;
+    } else {
+      setCurrentSort(null);
     }
     getArticles(99, topic, sort_by, order)
       .then((res) => {
@@ -136,7 +141,11 @@ function ArticleExplorer() {
         </p>
       </div>
       <section className="flex h-full w-full" aria-label="Articles">
-        <ArticleCarousel articles={articles} setSwiper={setSwiper} />
+        <ArticleCarousel
+          articles={articles}
+          setSwiper={setSwiper}
+          currentSort={currentSort}
+        />
         <ArticleSortMenu
           visible={navSettings.sortMenuActive}
           sorts={sorts}

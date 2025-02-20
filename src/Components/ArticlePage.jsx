@@ -9,6 +9,7 @@ function ArticlePage({}) {
   const [articleLoading, setArticleLoading] = useState(false);
   const { article_id } = useParams();
   const { setNavSettings } = useContext(NavSettings);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setNavSettings((settings) => {
@@ -25,7 +26,14 @@ function ArticlePage({}) {
         setArticleLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 404) {
+          setError("404: This article doesn't exist");
+        } else if (err.response.status === 400) {
+          setError("400: That's not a valid article id ");
+        } else {
+          setError("500: There's a problem with our server 0_0");
+        }
+
         setArticleLoading(false);
       });
   }, [article_id]);
@@ -39,11 +47,7 @@ function ArticlePage({}) {
       </>
     );
 
-  return (
-    <>
-      <section>{elToRender}</section>
-    </>
-  );
+  return <>{error ? <p>{error}</p> : <section>{elToRender}</section>}</>;
 }
 
 export default ArticlePage;
