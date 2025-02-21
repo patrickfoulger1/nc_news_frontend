@@ -62,8 +62,7 @@ I added a dedicated nav that connects these two pages together, and also changes
 
 The website for phones tries to take advantage of their colorful screens and touch screen navigation. I took a simple approach to the UI to try and leave room for a colorful carouselle of articles.
 
-![image](https://github.com/user-attachments/assets/67ea2c95-e636-49c8-ac7c-12bfb9769d0f)
-![image](https://github.com/user-attachments/assets/23109833-a182-4253-8112-42c16f88e827)
+![image](https://github.com/user-attachments/assets/85dade8e-8da6-42e6-8df6-a35b7a6904b0)
 
 As the website scales in width it adds colums to keep making use of the space
 
