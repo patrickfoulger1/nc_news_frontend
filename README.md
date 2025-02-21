@@ -2,11 +2,13 @@
 
 ![Stack](https://skillicons.dev/icons?i=js,nodejs,react,css)
 
-[Check it out here](https://news-spin.netlify.app/)
+The website is hosted at https://news-spin.netlify.app/
+
+You can find more details about the backend database, and api I made for this project here -> [backend](https://github.com/patrickfoulger1/nc_news) 
 
 # What is it?
 
-A front end react project serving up and posting users, articles and comments from a postgres database. You can find more details about the backend I made for this project here -> [backend](https://news-spin.netlify.app/) 
+A front end react project serving up and posting users, articles and comments from a postgres database. 
 
 ## Features
 
