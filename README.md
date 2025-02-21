@@ -107,38 +107,3 @@ Right now the website is automatically logged in as a defualt singles user. In t
 
 
 
-
-
-
-
-
-
-
-## Local Installation
-
-Make sure you have Node.js and npm installed
-
-[![Node.js](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org/en/download) Requires Node.js v22.9.0  
-[![Node.js](https://skillicons.dev/icons?i=npm)](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) Requires npm 10.8.3
-
-Clone the repo
-
-```sh
-git clone https://github.com/patrickfoulger1/nc_news
-```
-
-Install dependencies
-
-```sh
-npm i
-```
-
-Run website locally
-
-```sh
-npm run dev
-```
-
----
-
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
