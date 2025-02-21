@@ -28,7 +28,7 @@ function ArticleCard({
      
     >
       <img
-        className="object-cover h-full w-full"
+        className="object-cover h-full w-full contrast-100"
         src={article_img_url}
         alt={title}
       />

@@ -16,7 +16,7 @@ function ArticleExplorer() {
   const [articles, setArticles] = useState([]);
   const [articlesLoading, setArticlesLoading] = useState(true);
   const [swiper, setSwiper] = useState(null);
-  const [displayIndex, setDisplayIndex] = useState(null);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const { setNavSettings, navSettings } = useContext(NavSettings);
   const display = searchParams.get("display");
@@ -128,13 +128,13 @@ function ArticleExplorer() {
     if ((swiper, !articlesLoading)) {
       if (display) {
         if (display === "first") {
-          setDisplayIndex(0);
+
           swiper.slideTo(0);
         } else {
           articles.forEach(({ article_id }, index) => {
             if (article_id === +display) {
               if (index > 1) {
-                setDisplayIndex(index);
+     
 
                 swiper.slideTo(index);
               }
@@ -150,9 +150,9 @@ function ArticleExplorer() {
   return (
     <>
       {loading}
-      <div className="absolute flex flex-col items-center justify-center fixed w-1/2 h-1/13  z-40 top-8 min-[414px]:top-1/2 md:top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2  md:-translate-y-0">
+      <div className="absolute flex flex-col items-center justify-center fixed w-1/2 h-1/13  z-40 top-8 md:top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2  md:-translate-y-0">
         <p className="text-white font-black text-5xl [text-shadow:_0px_0px_5px_rgba(0,0,0,0.5)]">
-          #{topic ? topic : "All"}
+          #{topic ? topic : "all"}
         </p>
       </div>
       <section className="flex h-full w-full" aria-label="Articles">

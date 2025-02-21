@@ -33,7 +33,7 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
 
   return (
     <>
-      <li className="flex max-w-250 min-w-100">
+      <li className="flex max-w-250 ">
         <br />
         <p className="w-2/4 border-t-1 border-black">
           <span>{author}</span>
@@ -42,7 +42,7 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
         </p>
 
         <p
-          className={`w-3/4 border-t-1 border-black ${
+          className={`w-3/4 text-xs sm:text-xl border-t-1 border-black ${
             commentDeleted || deletingComment ? "italic text-black" : ""
           }`}
         >
@@ -56,7 +56,7 @@ function Comment({ comment: { author, body, created_at, comment_id } }) {
         </p>
 
         <span
-          className={`w-22 h-15 text-black ${
+          className={`w-16 h-15 text-black ${
             username === author ? "border-none" : "border-t-1"
           }`}
         >

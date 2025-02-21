@@ -34,15 +34,13 @@ function ArticleCarousel({ articles, setSwiper }) {
       slidesPerView={1}
       direction={"vertical"}
       mousewheel={true}
-      pagination={{
-        dynamicBullets: true,
-      }}
+    
       grabCursor={true}
       onSwiper={(swiper) => {
         setSwiper(swiper);
       }}
       breakpoints={{
-        414: {
+        376: {
           slidesPerView: 2,
         },
 

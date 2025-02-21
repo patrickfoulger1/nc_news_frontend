@@ -48,7 +48,7 @@ function ArticlePage({}) {
 
   return (
     <>
-       {error ? <p>{error}</p> : <section>{elToRender}</section>}
+       {error ? <p>{error}</p> : <>{elToRender}</>}
     </>
   );
 }

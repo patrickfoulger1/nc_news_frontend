@@ -42,8 +42,8 @@ function Article({
 
   return (
     <>
-      <div className="flex flex-col font-noto-sans text-white h-full w-full max-w-300 m-auto items-center pb-8">
-        <div className="w-screen h-5/10 md:h-3/10 flex justify-center">
+      <div className="flex flex-col font-noto-sans text-white h-full w-9/10 max-w-300 m-auto items-center pb-8">
+        <div className="w-screen h-5/10 md:h-3/10 flex justify-center p-0">
           <img
             className="object-cover rounded-b-full  md:overflow-none md:w-screen max-h-100"
             src={articleImage}

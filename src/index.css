@@ -27,8 +27,8 @@ animation: var(--animate-spin); /* spin 1s linear infinite */
   }
 }
 
-html,
-body {
+html
+{
   margin: 0;
   padding: 0;
   height: 100vh;
