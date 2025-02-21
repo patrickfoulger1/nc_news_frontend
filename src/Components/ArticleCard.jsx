@@ -24,14 +24,8 @@ function ArticleCard({
 
   return (
     <figure
-    onClick={()=>{
-      navigate(`/${article_id}`);
-      setNavSettings((settings) => {
-      const newSettings = { ...settings };
-      newSettings.lastArticleIdClicked = article_id;
-      return newSettings;
-    });}}
-      className={`w-full h-full border-red-500 hover:border-2`}
+    onClick={()=>{console.log("hello")}}
+      className={`w-full h-full`}
      
     >
       <img
@@ -51,24 +45,37 @@ function ArticleCard({
               weight="fill"
               color="#FB2C36"
             ></Star>
-            <p className="text-l mr-3 text-center ">{votes} likes </p>
+            <p className="text-xs mr-3 text-center xl:text-xl">{votes} likes </p>
             <ChatCircleText
-              className="text-2xl mr-1"
+              className="text-xl mr-1"
               weight="fill"
               color="#FB2C36"
             ></ChatCircleText>
-            <p className="text-l  text-center"> {comment_count} comments </p>
+            <p className="text-xs xl:text-xl text-center"> {comment_count} comments </p>
             <Link
             to={{
               pathname: `/`,
               search: `?topic=${topic}&display=first${sortQuery}`,
             }}
           >
-            <button  className="z-10 m-4 inline-block cursor-pointer bg-black rounded-sm p-1 text-white w-inherit hover:bg-white hover:text-black">
+            <button className="m-4 inline-block cursor-pointer bg-black rounded-sm p-1 text-white w-inherit hover:bg-white hover:text-black">
               #{topic}
             </button>
           </Link>
-         
+          <p className="inline-block cursor-pointer bg-red-500 rounded-sm p-1 text-white p-2 text-center w-inherit hover:bg-white hover:text-black">
+            <a
+              onClick={() => {
+                navigate(`/${article_id}`);
+                setNavSettings((settings) => {
+                  const newSettings = { ...settings };
+                  newSettings.lastArticleIdClicked = article_id;
+                  return newSettings;
+                });
+              }}
+            >
+              Read
+            </a>
+          </p>
           
           </div>
             
