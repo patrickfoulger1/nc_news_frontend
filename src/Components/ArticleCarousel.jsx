@@ -34,6 +34,7 @@ function ArticleCarousel({ articles, setSwiper }) {
       slidesPerView={1}
       direction={"vertical"}
       mousewheel={true}
+   
     
       grabCursor={true}
       onSwiper={(swiper) => {
